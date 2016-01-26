@@ -22,9 +22,13 @@ class Mailchimp::ApiClient
   end
 
   private
+    def net_execute(method, url, params)
+      self.class.net_execute(method, url, params)
+    end
+
     # We are using RestClient::Request instead RestClient.get
     # to avoid issues with SSL certs while testing this demo on osx computers
-    def net_execute(method, url, params)
+    def self.net_execute(method, url, params)
       if method == :get
         RestClient::Request.execute(method: :get, url: url, payload: params, verify_ssl: false)
       else
