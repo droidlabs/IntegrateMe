@@ -1,11 +1,23 @@
 <h1>Competition App</h1>
 
-<h2>Enter competitions below</h2>
+<h3>Enter competitions below</h3>
 
 <% if @competitions.any? %>
   <ul>
     <% @competitions.each do |competition| %>
       <li><%= link_to competition.name, competition_entrant_page(competition) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Seed your data!</p>
+<% end %>
+
+<h3>Or manage competitions</h3>
+
+<% if @competitions.any? %>
+  <ul>
+    <% @competitions.each do |competition| %>
+      <li><%= link_to competition.name, edit_competition_path(competition) %></li>
     <% end %>
   </ul>
 <% else %>

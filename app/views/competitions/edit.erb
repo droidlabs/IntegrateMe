@@ -1,0 +1,27 @@
+<div ng-controller="EditCompetitionController as ctrl" ng-init="init(<%= edit_competition_init(@competition) %>)">
+  <h1>Edit: {{competition.name}}</h1>
+
+  <p>Please enter mailchimp API details.</p>
+
+  <form name="mailchimp-form">
+    <p>
+      <label for="email">Mailchimp Api Key</label>
+      <br />
+      <input id="email" name="email" ng-model="competition.mailchimp_api_key">
+    </p>
+
+    <p>
+      <label for="email">Mailchimp DataCenter</label>
+      <br />
+      <input id="email" name="email" ng-model="competition.mailchimp_datacenter">
+    </p>
+
+    <p>
+      <label for="email">Mailchimp List</label>
+      <br />
+      <input id="email" name="email" ng-model="competition.mailchimp_list">
+    </p>
+
+    <input type="submit" ng-click="submit()" value="Save">
+  </form>
+</div>

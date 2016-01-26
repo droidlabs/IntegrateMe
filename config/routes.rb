@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  resources :entries
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+
+  # JSON PAGES
+  resources :entries
+
+  # HTML PAGES
   root 'welcome#index'
   get ':competition_id/:permalink' => 'competitions#entrant_page', constraints: {competition_id: /\d+/}
+  get "/manage/:id" => 'competitions#edit', constraints: {id: /\d+/}, as: :edit_competition
   post 'entries' => 'entries#create'
 
   # Example of regular route:

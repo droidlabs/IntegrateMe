@@ -71,3 +71,15 @@ div {
     list-style: square;
   }
 }
+
+.container {
+  padding: 40px;
+  margin: 40px;
+  border: 2px solid #888;
+  h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #888;
+  }
+}
