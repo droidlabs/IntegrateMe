@@ -10,7 +10,10 @@ class Mailchimp::ApiClient
     json = net_execute(:post, url,
       apikey:          api_key,
       id:              list_id,
-      email:           { email: email }
+      email:           { email: email },
+      update_existing: true,
+      double_optin:    false,
+      merge_vars:      {}
     )
     parse_json(json)
   end
