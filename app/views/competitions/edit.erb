@@ -5,21 +5,31 @@
 
   <form name="mailchimp-form">
     <p>
-      <label for="email">Mailchimp Api Key</label>
+      <label for="mailchimp_api_key">Mailchimp Api Key</label>
       <br />
-      <input id="email" name="email" ng-model="competition.mailchimp_api_key">
+      <input id="mailchimp_api_key" name="mailchimp_api_key" ng-model="competition.mailchimp_api_key">
     </p>
 
     <p>
-      <label for="email">Mailchimp DataCenter</label>
+      <label for="mailchimp_datacenter">Mailchimp DataCenter</label>
       <br />
-      <input id="email" name="email" ng-model="competition.mailchimp_datacenter">
+      <input id="mailchimp_datacenter" name="mailchimp_datacenter" ng-model="competition.mailchimp_datacenter">
     </p>
 
     <p>
-      <label for="email">Mailchimp List</label>
+      <label for="mailchimp_list_id">Mailchimp List</label>
       <br />
-      <input id="email" name="email" ng-model="competition.mailchimp_list">
+      <div ng-show="competition.mailchimp_api_key && competition.mailchimp_datacenter && lists">
+        <select ng-options="item.id as item.name for item in lists" ng-model="competition.mailchimp_list_id"></select>
+      </div>
+
+      <div ng-show="competition.mailchimp_api_key && competition.mailchimp_datacenter && !lists">
+        Loading lists...
+      </div>
+
+      <div ng-hide="competition.mailchimp_api_key && competition.mailchimp_datacenter">
+        Please enter Api Key and Datacenter first
+      </div>
     </p>
 
     <input type="submit" ng-click="submit()" value="Save">

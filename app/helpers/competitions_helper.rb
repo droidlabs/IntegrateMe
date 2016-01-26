@@ -10,6 +10,6 @@ module CompetitionsHelper
   end
 
   def edit_competition_init(competition)
-    competition.to_json(only: [:id, :name])
+    competition.to_json(only: [:id, :name, :mailchimp_api_key, :mailchimp_datacenter, :mailchimp_list_id])
   end
 end

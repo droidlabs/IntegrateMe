@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   # JSON PAGES
-  resources :entries
+  resources :entries, only: [:create]
+  resources :mailchimp_lists, only: [:index]
+  resources :competitions, only: [:update]
 
   # HTML PAGES
   root 'welcome#index'
