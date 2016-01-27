@@ -8,6 +8,10 @@ window.app.controller('EditCompetitionController', ($scope, $http) ->
       $http.get("/mailchimp_lists.json?api_key=#{api_key}&datacenter=#{datacenter}").
         success((data, status, headers, config) ->
           $scope.lists = data.data
+          $scope.invalidCredentials = false
+        ).
+        error((data, status, headers, config) ->
+          $scope.invalidCredentials = true
         )
 
   $scope.init = (data) ->

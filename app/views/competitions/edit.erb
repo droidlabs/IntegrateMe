@@ -23,8 +23,12 @@
         <select ng-options="item.id as item.name for item in lists" ng-model="competition.mailchimp_list_id"></select>
       </div>
 
-      <div ng-show="competition.mailchimp_api_key && competition.mailchimp_datacenter && !lists">
+      <div ng-show="competition.mailchimp_api_key && competition.mailchimp_datacenter && !lists && !invalidCredentials">
         Loading lists...
+      </div>
+
+      <div class="field_with_errors" ng-show="competition.mailchimp_api_key && competition.mailchimp_datacenter && invalidCredentials">
+        Error. Seems that you've provided invalid credentials. Please try again.
       </div>
 
       <div ng-hide="competition.mailchimp_api_key && competition.mailchimp_datacenter">

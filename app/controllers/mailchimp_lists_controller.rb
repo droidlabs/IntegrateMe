@@ -6,6 +6,8 @@ class MailchimpListsController < ApplicationController
       api_key: params[:api_key]
     )
     render json: response.to_json
+  rescue => e
+    render json: {}, status: 422
   end
 
   private
